@@ -39,89 +39,143 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Tow　<button class="btn btn-outline-danger" v-on:click="tow_num = 0;">倒産</button></th>
-          <td>{{ tow_num }} 件　<button class="btn btn-primary" v-on:click="add_tow_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_tow_num">-</button></td>
+          <th scope="row">Tow</th>
+          <td>{{ tow_num }} 件</td>
           <td>{{ tow_stock | addComma }}</td>
           <td>7000</td>
           <td>3500</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>tow_num_of_1st<br>tow_rank_of_1st 位</td>
+          <td>tow_num_of_2nd<br>tow_rank_of_2nd 位</td>
+          <td>tow_num_of_3rd<br>tow_rank_of_3rd 位</td>
+          <td>tow_num_of_4th<br>tow_rank_of_4th 位</td>
         </tr>
         <tr>
-          <th scope="row">Lux　<button class="btn btn-outline-danger" v-on:click="lux_num = 0;">倒産</button></th>
-          <td>{{ lux_num }} 件　<button class="btn btn-primary" v-on:click="add_lux_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_lux_num">-</button></td>
+          <th><button class="btn btn-outline-danger" v-on:click="tow_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_tow_num">+</button>　<button class="btn btn-secondary" v-on:click="subtract_tow_num">-</button></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+
+        <!-- Lux -->
+        <tr>
+          <th scope="row">Lux</th>
+          <td>{{ lux_num }} 件</td>
           <td>{{ lux_stock | addComma }}</td>
           <td>3000</td>
           <td>1500</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>lux_num_of_1st<br>lux_rank_of_1st 位</td>
+          <td>lux_num_of_2nd<br>lux_rank_of_2nd 位</td>
+          <td>lux_num_of_3rd<br>lux_rank_of_3rd 位</td>
+          <td>lux_num_of_4th<br>lux_rank_of_4th 位</td>
         </tr>
         <tr>
-          <th scope="row">Fes　<button class="btn btn-outline-danger" v-on:click="fes_num = 0;">倒産</button></th>
-          <td>{{ fes_num }} 件　<button class="btn btn-primary" v-on:click="add_fes_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_fes_num">-</button></td>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="lux_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_lux_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_lux_num">-</button></td>
+        </tr>
+        <!-- /Lux -->
+
+        <!-- Fes -->
+        <tr>
+          <th scope="row">Fes</th>
+          <td>{{ fes_num }} 件</td>
           <td>{{ fes_stock | addComma }}</td>
           <td>0</td>
           <td>0</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>fes_num_of_1st<br>fes_rank_of_1st 位</td>
+          <td>fes_num_of_2nd<br>fes_rank_of_2nd 位</td>
+          <td>fes_num_of_3rd<br>fes_rank_of_3rd 位</td>
+          <td>fes_num_of_4th<br>fes_rank_of_4th 位</td>
         </tr>
+
         <tr>
-          <th scope="row">Ame　<button class="btn btn-outline-danger" v-on:click="ame_num = 0;">倒産</button></th>
-          <td>{{ ame_num }} 件　<button class="btn btn-primary" v-on:click="add_ame_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_ame_num">-</button></td>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="fes_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_fes_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_fes_num">-</button></td>
+        </tr>
+        <!-- /Fes -->
+
+        <!-- Ame -->
+        <tr>
+          <th scope="row">Ame</th>
+          <td>{{ ame_num }} 件</td>
           <td>{{ ame_stock | addComma }}</td>
           <td>0</td>
           <td>0</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>ame_num_of_1st<br>ame_rank_of_1st 位</td>
+          <td>ame_num_of_2nd<br>ame_rank_of_2nd 位</td>
+          <td>ame_num_of_3rd<br>ame_rank_of_3rd 位</td>
+          <td>ame_num_of_4th<br>ame_rank_of_4th 位</td>
         </tr>
         <tr>
-          <th scope="row">Wor　<button class="btn btn-outline-danger" v-on:click="wor_num = 0;">倒産</button></th>
-          <td>{{ wor_num }} 件　<button class="btn btn-primary" v-on:click="add_wor_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_wor_num">-</button></td>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="ame_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_ame_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_ame_num">-</button></td>
+        </tr>
+        <!-- /Ame -->
+
+        <!-- Wor -->
+        <tr>
+          <th scope="row">Wor</th>
+          <td>{{ wor_num }} 件</td>
           <td>{{ wor_stock | addComma }}</td>
           <td>0</td>
           <td>0</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>wor_num_of_1st<br>wor_rank_of_1st 位</td>
+          <td>wor_num_of_2nd<br>wor_rank_of_2nd 位</td>
+          <td>wor_num_of_3rd<br>wor_rank_of_3rd 位</td>
+          <td>wor_num_of_4th<br>wor_rank_of_4th 位</td>
         </tr>
         <tr>
-          <th scope="row">Imp　<button class="btn btn-outline-danger" v-on:click="imp_num = 0;">倒産</button></th>
-          <td>{{ imp_num }} 件　<button class="btn btn-primary" v-on:click="add_imp_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_imp_num">-</button></td>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="wor_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_wor_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_wor_num">-</button></td>
+        </tr>
+        <!-- /Wor -->
+
+        <!-- Imp -->
+        <tr>
+          <th scope="row">Imp</th>
+          <td>{{ imp_num }} 件</td>
           <td>{{ imp_stock | addComma }}</td>
           <td>13500</td>
           <td>13500</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>imp_num_of_1st<br>imp_rank_of_1st 位</td>
+          <td>imp_num_of_2nd<br>imp_rank_of_2nd 位</td>
+          <td>imp_num_of_3rd<br>imp_rank_of_3rd 位</td>
+          <td>imp_num_of_4th<br>imp_rank_of_4th 位</td>
         </tr>
         <tr>
-          <th scope="row">Con　<button class="btn btn-outline-danger" v-on:click="con_num = 0;">倒産</button></th>
-          <td>{{ con_num }} 件　<button class="btn btn-primary" v-on:click="add_con_num">+</button>　<button
-              class="btn btn-secondary" v-on:click="subtract_con_num">-</button></td>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="imp_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_imp_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_imp_num">-</button></td>
+        </tr>
+        <!-- /Imp -->
+
+        <!-- con -->
+        <tr>
+          <th scope="row">Con</th>
+          <td>{{ con_num }} 件</td>
           <td>{{ con_stock | addComma }}</td>
           <td>12000</td>
           <td>12000</td>
-          <td>1</td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
+          <td>con_num_of_1st<br>con_rank_of_1st 位</td>
+          <td>con_num_of_2nd<br>con_rank_of_2nd 位</td>
+          <td>con_num_of_3rd<br>con_rank_of_3rd 位</td>
+          <td>con_num_of_4th<br>con_rank_of_4th 位</td>
         </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="con_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_con_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_con_num">-</button></td>
+        </tr>
+        <!-- /con -->
         <tr>
           <th scope="row"></th>
           <td></td>
@@ -293,6 +347,7 @@
             return this.con_num--;
           }
         },
+
       },
       computed: {
         // Tow / Lux の株価計算式
