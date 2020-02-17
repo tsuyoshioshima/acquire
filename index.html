@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>アクワイア計算機</title>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h1>アクワイア計算機</h1>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">件数</th>
+          <th scope="col">株価</th>
+          <th scope="col" colspan="2">合併ボーナス</th>
+          <th scope="col" colspan="4">所持株数</th>
+        </tr>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">１位</th>
+          <th scope="col">２位</th>
+          <th scope="col">１番手</th>
+          <th scope="col">２番手</th>
+          <th scope="col">３番手</th>
+          <th scope="col">４番手</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Tow</th>
+          <td><select v-model="tow_num">
+              <option v-for="n in 42">{{ n - 1 }}</option>
+            </select> 件</td>
+          <td>{{ tow_stock }}</td>
+          <td>7000</td>
+          <td>3500</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Lux</th>
+          <td>3 件</td>
+          <td>300</td>
+          <td>3000</td>
+          <td>1500</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Fes</th>
+          <td>3 件</td>
+          <td>400</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Ame</th>
+          <td>5 件</td>
+          <td>600</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Wor</th>
+          <td>3 件</td>
+          <td>400</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Imp</th>
+          <td>13 件</td>
+          <td>900</td>
+          <td>13500</td>
+          <td>13500</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row">Con</th>
+          <td>9 件</td>
+          <td>800</td>
+          <td>12000</td>
+          <td>12000</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>現金除いた合計</td>
+          <td>8700</td>
+          <td>10200</td>
+          <td>13600</td>
+          <td>16200</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>株券</td>
+          <td>2200</td>
+          <td>1700</td>
+          <td>1600</td>
+          <td>2700</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>ボーナス</td>
+          <td>6500</td>
+          <td>8500</td>
+          <td>12000</td>
+          <td>13500</td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="text-center bg-dark text-light">
+      <small> &copy; 2020 Ryuya Iwate.</small>
+    </footer>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        tow_num: 0
+      },
+      computed: {
+        //株価の計算式
+        //=IFS(C3=0,"0",C3=1,"0",C3=2,"200",C3=3,"300",C3=4,"400",C3=5,"500",AND(C3>=6,C3<=10),"600",AND(C3>=11,C3<=20),"700",AND(C3>=21,C3<=30),"800",AND(C3>=31,C3<=40),"900",C3<=41,"1000")
+        tow_stock: function () {
+          if (this.tow_num <= 1) {
+            return 0
+          } else if (this.tow_num >= 2 && this.tow_num <= 5) {
+            return this.tow_num * 100
+          } else if (this.tow_num >= 6 && this.tow_num <= 10) {
+            return 600
+          } else if (this.tow_num >= 11 && this.tow_num <= 20) {
+            return 700
+          } else if (this.tow_num >= 21 && this.tow_num <= 30) {
+            return 800
+          } else if (this.tow_num >= 31 && this.tow_num <= 40) {
+            return 900
+          } else if (this.tow_num <= 41) {
+            return 1000
+          }
+        }
+      }
+
+    });
+
+  </script>
+</body>
+
+</html>
