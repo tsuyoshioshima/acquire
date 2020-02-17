@@ -39,7 +39,7 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Tow</th>
+          <th scope="row">Tow　<button class="btn btn-outline-danger" v-on:click="tow_num = 0;">倒産</button></th>
           <td>{{ tow_num }} 件　<button class="btn btn-primary" v-on:click="add_tow_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_tow_num">-</button></td>
           <td>{{ tow_stock | addComma }}</td>
@@ -51,7 +51,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Lux</th>
+          <th scope="row">Lux　<button class="btn btn-outline-danger" v-on:click="lux_num = 0;">倒産</button></th>
           <td>{{ lux_num }} 件　<button class="btn btn-primary" v-on:click="add_lux_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_lux_num">-</button></td>
           <td>{{ lux_stock | addComma }}</td>
@@ -63,7 +63,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Fes</th>
+          <th scope="row">Fes　<button class="btn btn-outline-danger" v-on:click="fes_num = 0;">倒産</button></th>
           <td>{{ fes_num }} 件　<button class="btn btn-primary" v-on:click="add_fes_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_fes_num">-</button></td>
           <td>{{ fes_stock | addComma }}</td>
@@ -75,7 +75,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Ame</th>
+          <th scope="row">Ame　<button class="btn btn-outline-danger" v-on:click="ame_num = 0;">倒産</button></th>
           <td>{{ ame_num }} 件　<button class="btn btn-primary" v-on:click="add_ame_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_ame_num">-</button></td>
           <td>{{ ame_stock | addComma }}</td>
@@ -87,7 +87,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Wor</th>
+          <th scope="row">Wor　<button class="btn btn-outline-danger" v-on:click="wor_num = 0;">倒産</button></th>
           <td>{{ wor_num }} 件　<button class="btn btn-primary" v-on:click="add_wor_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_wor_num">-</button></td>
           <td>{{ wor_stock | addComma }}</td>
@@ -99,7 +99,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Imp</th>
+          <th scope="row">Imp　<button class="btn btn-outline-danger" v-on:click="imp_num = 0;">倒産</button></th>
           <td>{{ imp_num }} 件　<button class="btn btn-primary" v-on:click="add_imp_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_imp_num">-</button></td>
           <td>{{ imp_stock | addComma }}</td>
@@ -111,7 +111,7 @@
           <td>0</td>
         </tr>
         <tr>
-          <th scope="row">Con</th>
+          <th scope="row">Con　<button class="btn btn-outline-danger" v-on:click="con_num = 0;">倒産</button></th>
           <td>{{ con_num }} 件　<button class="btn btn-primary" v-on:click="add_con_num">+</button>　<button
               class="btn btn-secondary" v-on:click="subtract_con_num">-</button></td>
           <td>{{ con_stock | addComma }}</td>
