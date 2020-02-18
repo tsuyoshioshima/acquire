@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <table border=1>
+      <thead>
+        <th>ホテル名</th>
+        <th>１番手</th>
+        <th>２番手</th>
+        <th>３番手</th>
+        <th>４番手</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tow<br>
+            <button v-on:click="p1.tow = 0;">倒産</button>
+          </td>
+          <td>{{ p1.tow }}<br>
+            <button v-on:click="add_p1_tow">+</button>
+            <button v-on:click="subtract_p1_tow">-</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Lux<br>
+            <button v-on:click="p1.lux = 0;">倒産</button>
+          </td>
+          <td>{{ p1.lux }}<br>
+            <button v-on:click="add_p1_lux">+</button>
+            <button v-on:click="subtract_p1_lux">-</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Fes<br>
+            <button v-on:click="p1.fes = 0;">倒産</button>
+          </td>
+          <td>{{ p1.fes }}<br>
+            <button v-on:click="add_p1_fes">+</button>
+            <button v-on:click="subtract_p1_fes">-</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Ame<br>
+            <button v-on:click="p1.ame = 0;">倒産</button>
+          </td>
+          <td>{{ p1.ame }}<br>
+            <button v-on:click="add_p1_ame">+</button>
+            <button v-on:click="subtract_p1_ame">-</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Wor</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Imp</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Con</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        // p1=player1, p2=player2, p3=player3, p4=player4
+        p1: {
+          tow: 0,
+          lux: 0,
+          fes: 0,
+          ame: 0,
+          wor: 0,
+          imp: 0,
+          con: 0
+        },
+      },
+      methods: {
+        add_p1_tow: function() {
+          if ( this.p1.tow == 41 ) {
+            return;
+          } else {
+            return this.p1.tow++;
+          }
+        },
+        subtract_p1_tow: function() {
+          if ( this.p1.tow == 0 ) {
+            return;
+          } else {
+            return this.p1.tow--;
+          }
+        },
+        add_p1_lux: function() {
+          if ( this.p1.lux == 41 ) {
+            return;
+          } else {
+            return this.p1.lux++;
+          }
+        },
+        subtract_p1_lux: function() {
+          if ( this.p1.lux == 0 ) {
+            return;
+          } else {
+            return this.p1.lux--;
+          }
+        },
+        add_p1_fes: function() {
+          if ( this.p1.fes == 41 ) {
+            return;
+          } else {
+            return this.p1.fes++;
+          }
+        },
+        subtract_p1_fes: function() {
+          if ( this.p1.fes == 0 ) {
+            return;
+          } else {
+            return this.p1.fes--;
+          }
+        },
+        add_p1_ame: function() {
+          if ( this.p1.ame == 41 ) {
+            return;
+          } else {
+            return this.p1.ame++;
+          }
+        },
+        subtract_p1_ame: function() {
+          if ( this.p1.ame == 0 ) {
+            return;
+          } else {
+            return this.p1.ame--;
+          }
+        },
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>アクワイア計算機</title>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h1>アクワイア計算機</h1>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ホテル名</th>
+          <th scope="col">件数</th>
+          <th scope="col">株価</th>
+          <th scope="col" colspan="2">合併ボーナス</th>
+          <th scope="col" colspan="4">所持株数</th>
+        </tr>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">１位</th>
+          <th scope="col">２位</th>
+          <th scope="col">１番手</th>
+          <th scope="col">２番手</th>
+          <th scope="col">３番手</th>
+          <th scope="col">４番手</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Tow</th>
+          <td>{{ tow_num }} 件</td>
+          <td>{{ tow_stock | addComma }}</td>
+          <td>7000</td>
+          <td>3500</td>
+          <td>tow_num_of_1st<br>tow_rank_of_1st 位</td>
+          <td>tow_num_of_2nd<br>tow_rank_of_2nd 位</td>
+          <td>tow_num_of_3rd<br>tow_rank_of_3rd 位</td>
+          <td>tow_num_of_4th<br>tow_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th><button class="btn btn-outline-danger" v-on:click="tow_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_tow_num">+</button>　<button class="btn btn-secondary" v-on:click="subtract_tow_num">-</button></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+
+        <!-- Lux -->
+        <tr>
+          <th scope="row">Lux</th>
+          <td>{{ lux_num }} 件</td>
+          <td>{{ lux_stock | addComma }}</td>
+          <td>3000</td>
+          <td>1500</td>
+          <td>lux_num_of_1st<br>lux_rank_of_1st 位</td>
+          <td>lux_num_of_2nd<br>lux_rank_of_2nd 位</td>
+          <td>lux_num_of_3rd<br>lux_rank_of_3rd 位</td>
+          <td>lux_num_of_4th<br>lux_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="lux_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_lux_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_lux_num">-</button></td>
+        </tr>
+        <!-- /Lux -->
+
+        <!-- Fes -->
+        <tr>
+          <th scope="row">Fes</th>
+          <td>{{ fes_num }} 件</td>
+          <td>{{ fes_stock | addComma }}</td>
+          <td>0</td>
+          <td>0</td>
+          <td>fes_num_of_1st<br>fes_rank_of_1st 位</td>
+          <td>fes_num_of_2nd<br>fes_rank_of_2nd 位</td>
+          <td>fes_num_of_3rd<br>fes_rank_of_3rd 位</td>
+          <td>fes_num_of_4th<br>fes_rank_of_4th 位</td>
+        </tr>
+
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="fes_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_fes_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_fes_num">-</button></td>
+        </tr>
+        <!-- /Fes -->
+
+        <!-- Ame -->
+        <tr>
+          <th scope="row">Ame</th>
+          <td>{{ ame_num }} 件</td>
+          <td>{{ ame_stock | addComma }}</td>
+          <td>0</td>
+          <td>0</td>
+          <td>ame_num_of_1st<br>ame_rank_of_1st 位</td>
+          <td>ame_num_of_2nd<br>ame_rank_of_2nd 位</td>
+          <td>ame_num_of_3rd<br>ame_rank_of_3rd 位</td>
+          <td>ame_num_of_4th<br>ame_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="ame_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_ame_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_ame_num">-</button></td>
+        </tr>
+        <!-- /Ame -->
+
+        <!-- Wor -->
+        <tr>
+          <th scope="row">Wor</th>
+          <td>{{ wor_num }} 件</td>
+          <td>{{ wor_stock | addComma }}</td>
+          <td>0</td>
+          <td>0</td>
+          <td>wor_num_of_1st<br>wor_rank_of_1st 位</td>
+          <td>wor_num_of_2nd<br>wor_rank_of_2nd 位</td>
+          <td>wor_num_of_3rd<br>wor_rank_of_3rd 位</td>
+          <td>wor_num_of_4th<br>wor_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="wor_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_wor_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_wor_num">-</button></td>
+        </tr>
+        <!-- /Wor -->
+
+        <!-- Imp -->
+        <tr>
+          <th scope="row">Imp</th>
+          <td>{{ imp_num }} 件</td>
+          <td>{{ imp_stock | addComma }}</td>
+          <td>13500</td>
+          <td>13500</td>
+          <td>imp_num_of_1st<br>imp_rank_of_1st 位</td>
+          <td>imp_num_of_2nd<br>imp_rank_of_2nd 位</td>
+          <td>imp_num_of_3rd<br>imp_rank_of_3rd 位</td>
+          <td>imp_num_of_4th<br>imp_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="imp_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_imp_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_imp_num">-</button></td>
+        </tr>
+        <!-- /Imp -->
+
+        <!-- con -->
+        <tr>
+          <th scope="row">Con</th>
+          <td>{{ con_num }} 件</td>
+          <td>{{ con_stock | addComma }}</td>
+          <td>12000</td>
+          <td>12000</td>
+          <td>con_num_of_1st<br>con_rank_of_1st 位</td>
+          <td>con_num_of_2nd<br>con_rank_of_2nd 位</td>
+          <td>con_num_of_3rd<br>con_rank_of_3rd 位</td>
+          <td>con_num_of_4th<br>con_rank_of_4th 位</td>
+        </tr>
+        <tr>
+          <th scope="row"><button class="btn btn-outline-danger" v-on:click="con_num = 0;">倒産</button></th>
+          <td><button class="btn btn-primary" v-on:click="add_con_num">+</button>　<button
+            class="btn btn-secondary" v-on:click="subtract_con_num">-</button></td>
+        </tr>
+        <!-- /con -->
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>現金除いた合計</td>
+          <td>8700</td>
+          <td>10200</td>
+          <td>13600</td>
+          <td>16200</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>株券</td>
+          <td>2200</td>
+          <td>1700</td>
+          <td>1600</td>
+          <td>2700</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>ボーナス</td>
+          <td>6500</td>
+          <td>8500</td>
+          <td>12000</td>
+          <td>13500</td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="text-center bg-dark text-light">
+      <small> &copy; 2020 Ryuya Iwate & Tsuyoshi Oshima.</small>
+    </footer>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+
+    // 数値にカンマを入れるフィルタ
+    Vue.filter('addComma', function (val) {
+      return val.toLocaleString();
+    });
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        tow_num: 0,
+        lux_num: 0,
+        fes_num: 0,
+        ame_num: 0,
+        wor_num: 0,
+        imp_num: 0,
+        con_num: 0
+      },
+      methods: {
+
+        // ホテルの件数増減処理
+        add_tow_num: function () {
+          if (this.tow_num == 41) {
+            return;
+          } else {
+            return this.tow_num++;
+          }
+        },
+        subtract_tow_num: function () {
+          if (this.tow_num == 0) {
+            return;
+          } else {
+            return this.tow_num--;
+          }
+        },
+        add_lux_num: function () {
+          if (this.lux_num == 41) {
+            return;
+          } else {
+            return this.lux_num++;
+          }
+        },
+        subtract_lux_num: function () {
+          if (this.lux_num == 0) {
+            return;
+          } else {
+            return this.lux_num--;
+          }
+        },
+        add_fes_num: function () {
+          if (this.fes_num == 41) {
+            return;
+          } else {
+            return this.fes_num++;
+          }
+        },
+        subtract_fes_num: function () {
+          if (this.fes_num == 0) {
+            return;
+          } else {
+            return this.fes_num--;
+          }
+        },
+        add_ame_num: function () {
+          if (this.ame_num == 41) {
+            return;
+          } else {
+            return this.ame_num++;
+          }
+        },
+        subtract_ame_num: function () {
+          if (this.ame_num == 0) {
+            return;
+          } else {
+            return this.ame_num--;
+          }
+        },
+        add_wor_num: function () {
+          if (this.wor_num == 41) {
+            return;
+          } else {
+            return this.wor_num++;
+          }
+        },
+        subtract_wor_num: function () {
+          if (this.wor_num == 0) {
+            return;
+          } else {
+            return this.wor_num--;
+          }
+        },
+        add_imp_num: function () {
+          if (this.imp_num == 41) {
+            return;
+          } else {
+            return this.imp_num++;
+          }
+        },
+        subtract_imp_num: function () {
+          if (this.imp_num == 0) {
+            return;
+          } else {
+            return this.imp_num--;
+          }
+        },
+        add_con_num: function () {
+          if (this.con_num == 41) {
+            return;
+          } else {
+            return this.con_num++;
+          }
+        },
+        subtract_con_num: function () {
+          if (this.con_num == 0) {
+            return;
+          } else {
+            return this.con_num--;
+          }
+        },
+
+      },
+      computed: {
+        // Tow / Lux の株価計算式
+        //=IFS(C3=0,"0",C3=1,"0",C3=2,"200",C3=3,"300",C3=4,"400",C3=5,"500",AND(C3>=6,C3<=10),"600",AND(C3>=11,C3<=20),"700",AND(C3>=21,C3<=30),"800",AND(C3>=31,C3<=40),"900",C3<=41,"1000")
+
+        // Tow の株価
+        tow_stock: function () {
+          if (this.tow_num <= 1) {
+            return 0
+          } else if (this.tow_num >= 2 && this.tow_num <= 5) {
+            return this.tow_num * 100
+          } else if (this.tow_num >= 6 && this.tow_num <= 10) {
+            return 600
+          } else if (this.tow_num >= 11 && this.tow_num <= 20) {
+            return 700
+          } else if (this.tow_num >= 21 && this.tow_num <= 30) {
+            return 800
+          } else if (this.tow_num >= 31 && this.tow_num <= 40) {
+            return 900
+          } else if (this.tow_num <= 41) {
+            return 1000
+          }
+        },
+
+        // Lux の株価
+        lux_stock: function () {
+          if (this.lux_num <= 1) {
+            return 0
+          } else if (this.lux_num >= 2 && this.lux_num <= 5) {
+            return this.lux_num * 100
+          } else if (this.lux_num >= 6 && this.lux_num <= 10) {
+            return 600
+          } else if (this.lux_num >= 11 && this.lux_num <= 20) {
+            return 700
+          } else if (this.lux_num >= 21 && this.lux_num <= 30) {
+            return 800
+          } else if (this.lux_num >= 31 && this.lux_num <= 40) {
+            return 900
+          } else if (this.lux_num <= 41) {
+            return 1000
+          }
+        },
+
+        // Fes / Ame / Wor の株価計算式
+        // =IFS(C7=0,"0",C7=1,"0",C7=2,"300",C7=3,"400",C7=4,"500",C7=5,"600",AND(C7>=6,C7<=10),"700",AND(C7>=11,C7<=20),"800",AND(C7>=21,C7<=30),"900",AND(C7>=31,C7<=40),"1000",C7<=41,"1100")
+
+        // Fes の株価
+        fes_stock: function () {
+          if (this.fes_num <= 1) {
+            return 0
+          } else if (this.fes_num >= 2 && this.fes_num <= 5) {
+            return this.fes_num * 100 + 100
+          } else if (this.fes_num >= 6 && this.fes_num <= 10) {
+            return 700
+          } else if (this.fes_num >= 11 && this.fes_num <= 20) {
+            return 800
+          } else if (this.fes_num >= 21 && this.fes_num <= 30) {
+            return 900
+          } else if (this.fes_num >= 31 && this.fes_num <= 40) {
+            return 1000
+          } else if (this.fes_num <= 41) {
+            return 1100
+          }
+        },
+
+        // Ame の株価
+        ame_stock: function () {
+          if (this.ame_num <= 1) {
+            return 0
+          } else if (this.ame_num >= 2 && this.ame_num <= 5) {
+            return this.ame_num * 100 + 100
+          } else if (this.ame_num >= 6 && this.ame_num <= 10) {
+            return 700
+          } else if (this.ame_num >= 11 && this.ame_num <= 20) {
+            return 800
+          } else if (this.ame_num >= 21 && this.ame_num <= 30) {
+            return 900
+          } else if (this.ame_num >= 31 && this.ame_num <= 40) {
+            return 1000
+          } else if (this.ame_num <= 41) {
+            return 1100
+          }
+        },
+
+        // Wor の株価
+        wor_stock: function () {
+          if (this.wor_num <= 1) {
+            return 0
+          } else if (this.wor_num >= 2 && this.wor_num <= 5) {
+            return this.wor_num * 100 + 100
+          } else if (this.wor_num >= 6 && this.wor_num <= 10) {
+            return 700
+          } else if (this.wor_num >= 11 && this.wor_num <= 20) {
+            return 800
+          } else if (this.wor_num >= 21 && this.wor_num <= 30) {
+            return 900
+          } else if (this.wor_num >= 31 && this.wor_num <= 40) {
+            return 1000
+          } else if (this.wor_num <= 41) {
+            return 1100
+          }
+        },
+
+        // Imp / Con の株価計算式
+        // =IFS(C13=0,"0",C13=1,"0",C13=2,"400",C13=3,"500",C13=4,"600",C13=5,"700",AND(C13>=6,C13<=10),"800",AND(C13>=11,C13<=20),"900",AND(C13>=21,C13<=30),"1000",AND(C13>=31,C13<=40),"1100",C13<=41,"1200")
+
+        // Imp の株価
+        imp_stock: function () {
+          if (this.imp_num <= 1) {
+            return 0
+          } else if (this.imp_num >= 2 && this.imp_num <= 5) {
+            return this.imp_num * 100 + 200
+          } else if (this.imp_num >= 6 && this.imp_num <= 10) {
+            return 800
+          } else if (this.imp_num >= 11 && this.imp_num <= 20) {
+            return 900
+          } else if (this.imp_num >= 21 && this.imp_num <= 30) {
+            return 1000
+          } else if (this.imp_num >= 31 && this.imp_num <= 40) {
+            return 1100
+          } else if (this.imp_num <= 41) {
+            return 1200
+          }
+        },
+
+        // Con の株価
+        con_stock: function () {
+          if (this.con_num <= 1) {
+            return 0
+          } else if (this.con_num >= 2 && this.con_num <= 5) {
+            return this.con_num * 100 + 200
+          } else if (this.con_num >= 6 && this.con_num <= 10) {
+            return 800
+          } else if (this.con_num >= 11 && this.con_num <= 20) {
+            return 900
+          } else if (this.con_num >= 21 && this.con_num <= 30) {
+            return 1000
+          } else if (this.con_num >= 31 && this.con_num <= 40) {
+            return 1100
+          } else if (this.con_num <= 41) {
+            return 1200
+          }
+        },
+
+      } // computed
+
+    });
+
+    // https://docs.google.com/spreadsheets/d/1WT_yUzyXCkFzqThOiOOIwPVQ97JcJTqaoRbRz3sPYe4/edit?fbclid=IwAR2hhiTYP7FskvpYXSfVviwT8p_B695LKEpoYUYG9fev9MK69bsrP3dbFR4#gid=0
+  </script>
+</body>
+
+</html>

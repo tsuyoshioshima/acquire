@@ -1,392 +1,326 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>アクワイア計算機</title>
 </head>
-
 <body>
-  <div id="app" class="container">
-    <h1>アクワイア計算機</h1>
-    <table class="table">
-      <thead class="thead-dark">
+  <h1>アクワイア計算機</h1>
+  <div id="app">
+    <table border=1>
+      <thead>
         <tr>
-          <th scope="col">ホテル名</th>
-          <th scope="col">件数</th>
-          <th scope="col">株価</th>
-          <th scope="col" colspan="2">合併ボーナス</th>
-          <th scope="col" colspan="4">所持株数</th>
-        </tr>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col">１位</th>
-          <th scope="col">２位</th>
-          <th scope="col">１番手</th>
-          <th scope="col">２番手</th>
-          <th scope="col">３番手</th>
-          <th scope="col">４番手</th>
+          <th>ホテル名</th>
+          <th>軒数</th>
+          <th>株価</th>
+          <th>１位</th>
+          <th>２位</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Tow</th>
-          <td>{{ tow_num }} 件</td>
-          <td>{{ tow_stock | addComma }}</td>
-          <td>7000</td>
-          <td>3500</td>
-          <td>tow_num_of_1st<br>tow_rank_of_1st 位</td>
-          <td>tow_num_of_2nd<br>tow_rank_of_2nd 位</td>
-          <td>tow_num_of_3rd<br>tow_rank_of_3rd 位</td>
-          <td>tow_num_of_4th<br>tow_rank_of_4th 位</td>
+          <td>Tow<br>
+            <button v-on:click="h.tow = 0;">倒産</button>
+          </td>
+          <td>{{ h.tow }} 件<br>
+            <button v-show="h.tow != 41" v-on:click="h.tow++;">+</button>
+            <button v-show="h.tow != 0" v-on:click="h.tow--;">-</button>
+          </td>
+          <td>{{ s_tow }}</td>
+          <td>NaN</td>
+          <td>NaN</td>
         </tr>
         <tr>
-          <th><button class="btn btn-outline-danger" v-on:click="tow_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_tow_num">+</button>　<button class="btn btn-secondary" v-on:click="subtract_tow_num">-</button></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-
-        <!-- Lux -->
-        <tr>
-          <th scope="row">Lux</th>
-          <td>{{ lux_num }} 件</td>
-          <td>{{ lux_stock | addComma }}</td>
-          <td>3000</td>
-          <td>1500</td>
-          <td>lux_num_of_1st<br>lux_rank_of_1st 位</td>
-          <td>lux_num_of_2nd<br>lux_rank_of_2nd 位</td>
-          <td>lux_num_of_3rd<br>lux_rank_of_3rd 位</td>
-          <td>lux_num_of_4th<br>lux_rank_of_4th 位</td>
+          <td>Lux<br>
+            <button v-on:click="h.lux = 0;">倒産</button></td>
+          <td>{{ h.lux }} 件<br>
+            <button v-show="h.lux != 41" v-on:click="h.lux++;">+</button>
+            <button v-show="h.lux != 0" v-on:click="h.lux--;">-</button>
+          </td>
+          <td>{{ s_lux }}</td>
+          <td>NaN</td>
+          <td>NaN</td>
         </tr>
         <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="lux_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_lux_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_lux_num">-</button></td>
-        </tr>
-        <!-- /Lux -->
-
-        <!-- Fes -->
-        <tr>
-          <th scope="row">Fes</th>
-          <td>{{ fes_num }} 件</td>
-          <td>{{ fes_stock | addComma }}</td>
+          <td>Fes<br>
+            <button v-on:click="h.fes = 0;">倒産</button></td>
+            <td>{{ h.fes }} 件<br>
+              <button v-show="h.fes != 41" v-on:click="h.fes++;">+</button>
+              <button v-show="h.fes != 0" v-on:click="h.fes--;">-</button>
+            </td>
           <td>0</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <td>Ame<br>
+            <button v-on:click="h.ame = 0;">倒産</button></td>
+            <td>{{ h.ame }} 件<br>
+              <button v-show="h.ame != 41" v-on:click="h.ame++;">+</button>
+              <button v-show="h.ame != 0" v-on:click="h.ame--;">-</button>
+            </td>
           <td>0</td>
-          <td>fes_num_of_1st<br>fes_rank_of_1st 位</td>
-          <td>fes_num_of_2nd<br>fes_rank_of_2nd 位</td>
-          <td>fes_num_of_3rd<br>fes_rank_of_3rd 位</td>
-          <td>fes_num_of_4th<br>fes_rank_of_4th 位</td>
+          <td>NaN</td>
+          <td>NaN</td>
         </tr>
-
         <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="fes_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_fes_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_fes_num">-</button></td>
-        </tr>
-        <!-- /Fes -->
-
-        <!-- Ame -->
-        <tr>
-          <th scope="row">Ame</th>
-          <td>{{ ame_num }} 件</td>
-          <td>{{ ame_stock | addComma }}</td>
+          <td>Wor<br>
+            <button v-on:click="h.wor = 0;">倒産</button>
+          </td>
+          <td>{{ h.wor }} 件<br>
+            <button v-show="h.wor != 41" v-on:click="h.wor++;">+</button>
+            <button v-show="h.wor != 0" v-on:click="h.wor--;">-</button>
+          </td>
           <td>0</td>
+          <td>NaN</td>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <td>Imp<br>
+            <button v-on:click="h.imp = 0;">倒産</button>
+          </td>
+          <td>{{ h.imp }} 件<br>
+            <button v-show="h.imp != 41" v-on:click="h.imp++;">+</button>
+            <button v-show="h.imp != 0" v-on:click="h.imp--;">-</button>
+          </td>
           <td>0</td>
-          <td>ame_num_of_1st<br>ame_rank_of_1st 位</td>
-          <td>ame_num_of_2nd<br>ame_rank_of_2nd 位</td>
-          <td>ame_num_of_3rd<br>ame_rank_of_3rd 位</td>
-          <td>ame_num_of_4th<br>ame_rank_of_4th 位</td>
+          <td>NaN</td>
+          <td>NaN</td>
         </tr>
         <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="ame_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_ame_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_ame_num">-</button></td>
-        </tr>
-        <!-- /Ame -->
-
-        <!-- Wor -->
-        <tr>
-          <th scope="row">Wor</th>
-          <td>{{ wor_num }} 件</td>
-          <td>{{ wor_stock | addComma }}</td>
+          <td>Con<br>
+            <button v-on:click="h.con = 0;">倒産</button>
+          </td>
+          <td>{{ h.con }} 件<br>
+            <button v-show="h.con != 41" v-on:click="h.con++;">+</button>
+            <button v-show="h.con != 0" v-on:click="h.con--;">-</button>
+          </td>
           <td>0</td>
-          <td>0</td>
-          <td>wor_num_of_1st<br>wor_rank_of_1st 位</td>
-          <td>wor_num_of_2nd<br>wor_rank_of_2nd 位</td>
-          <td>wor_num_of_3rd<br>wor_rank_of_3rd 位</td>
-          <td>wor_num_of_4th<br>wor_rank_of_4th 位</td>
-        </tr>
-        <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="wor_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_wor_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_wor_num">-</button></td>
-        </tr>
-        <!-- /Wor -->
-
-        <!-- Imp -->
-        <tr>
-          <th scope="row">Imp</th>
-          <td>{{ imp_num }} 件</td>
-          <td>{{ imp_stock | addComma }}</td>
-          <td>13500</td>
-          <td>13500</td>
-          <td>imp_num_of_1st<br>imp_rank_of_1st 位</td>
-          <td>imp_num_of_2nd<br>imp_rank_of_2nd 位</td>
-          <td>imp_num_of_3rd<br>imp_rank_of_3rd 位</td>
-          <td>imp_num_of_4th<br>imp_rank_of_4th 位</td>
-        </tr>
-        <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="imp_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_imp_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_imp_num">-</button></td>
-        </tr>
-        <!-- /Imp -->
-
-        <!-- con -->
-        <tr>
-          <th scope="row">Con</th>
-          <td>{{ con_num }} 件</td>
-          <td>{{ con_stock | addComma }}</td>
-          <td>12000</td>
-          <td>12000</td>
-          <td>con_num_of_1st<br>con_rank_of_1st 位</td>
-          <td>con_num_of_2nd<br>con_rank_of_2nd 位</td>
-          <td>con_num_of_3rd<br>con_rank_of_3rd 位</td>
-          <td>con_num_of_4th<br>con_rank_of_4th 位</td>
-        </tr>
-        <tr>
-          <th scope="row"><button class="btn btn-outline-danger" v-on:click="con_num = 0;">倒産</button></th>
-          <td><button class="btn btn-primary" v-on:click="add_con_num">+</button>　<button
-            class="btn btn-secondary" v-on:click="subtract_con_num">-</button></td>
-        </tr>
-        <!-- /con -->
-        <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>現金除いた合計</td>
-          <td>8700</td>
-          <td>10200</td>
-          <td>13600</td>
-          <td>16200</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>株券</td>
-          <td>2200</td>
-          <td>1700</td>
-          <td>1600</td>
-          <td>2700</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>ボーナス</td>
-          <td>6500</td>
-          <td>8500</td>
-          <td>12000</td>
-          <td>13500</td>
+          <td>NaN</td>
+          <td>NaN</td>
         </tr>
       </tbody>
     </table>
-    <footer class="text-center bg-dark text-light">
-      <small> &copy; 2020 Ryuya Iwate & Tsuyoshi Oshima.</small>
-    </footer>
+    <div><button v-on:click="clear_hotel">ホテル全クリア</button></td>
+    </div>
+    <table border=1>
+    <thead>
+      <th>ホテル名</th>
+      <th>１番手</th>
+      <th>２番手</th>
+      <th>３番手</th>
+      <th>４番手</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tow</td>
+        <td>{{ p1.tow }}<br>
+          <button v-show="p1.tow != 41" v-on:click="p1.tow++;">+</button>
+          <button v-show="p1.tow != 0" v-on:click="p1.tow--;">-</button>
+        </td>
+        <td>{{ p2.tow }}<br>
+          <button v-show="p2.tow != 41" v-on:click="p2.tow++;">+</button>
+          <button v-show="p2.tow != 0" v-on:click="p2.tow--;">-</button>
+        </td>
+        <td>{{ p3.tow }}<br>
+          <button v-show="p3.tow != 41" v-on:click="p3.tow++;">+</button>
+          <button v-show="p3.tow != 0" v-on:click="p3.tow--;">-</button>
+        </td>
+        <td>{{ p4.tow }}<br>
+          <button v-show="p4.tow != 41" v-on:click="p4.tow++;">+</button>
+          <button v-show="p4.tow != 0" v-on:click="p4.tow--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Lux</td>
+        <td>{{ p1.lux }}<br>
+          <button v-show="p1.lux != 41" v-on:click="p1.lux++;">+</button>
+          <button v-show="p1.lux != 0" v-on:click="p1.lux--;">-</button>
+        </td>
+        <td>{{ p2.lux }}<br>
+          <button v-show="p2.lux != 41" v-on:click="p2.lux++;">+</button>
+          <button v-show="p2.lux != 0" v-on:click="p2.lux--;">-</button>
+        </td>
+        <td>{{ p3.lux }}<br>
+          <button v-show="p3.lux != 41" v-on:click="p3.lux++;">+</button>
+          <button v-show="p3.lux != 0" v-on:click="p3.lux--;">-</button>
+        </td>
+        <td>{{ p4.lux }}<br>
+          <button v-show="p4.lux != 41" v-on:click="p4.lux++;">+</button>
+          <button v-show="p4.lux != 0" v-on:click="p4.lux--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Fes</td>
+        <td>{{ p1.fes }}<br>
+          <button v-show="p1.fes != 41" v-on:click="p1.fes++;">+</button>
+          <button v-show="p1.fes != 0" v-on:click="p1.fes--;">-</button>
+        </td>
+        <td>{{ p2.fes }}<br>
+          <button v-show="p2.fes != 41" v-on:click="p2.fes++;">+</button>
+          <button v-show="p2.fes != 0" v-on:click="p2.fes--;">-</button>
+        </td>
+        <td>{{ p3.fes }}<br>
+          <button v-show="p3.fes != 41" v-on:click="p3.fes++;">+</button>
+          <button v-show="p3.fes != 0" v-on:click="p3.fes--;">-</button>
+        </td>
+        <td>{{ p4.fes }}<br>
+          <button v-show="p4.fes != 41" v-on:click="p4.fes++;">+</button>
+          <button v-show="p4.fes != 0" v-on:click="p4.fes--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Ame</td>
+        <td>{{ p1.ame }}<br>
+          <button v-show="p1.ame != 41" v-on:click="p1.ame++;">+</button>
+          <button v-show="p1.ame != 0" v-on:click="p1.ame--;">-</button>
+        </td>
+        <td>{{ p2.ame }}<br>
+          <button v-show="p2.ame != 41" v-on:click="p2.ame++;">+</button>
+          <button v-show="p2.ame != 0" v-on:click="p2.ame--;">-</button>
+        </td>
+        <td>{{ p3.ame }}<br>
+          <button v-show="p3.ame != 41" v-on:click="p3.ame++;">+</button>
+          <button v-show="p3.ame != 0" v-on:click="p3.ame--;">-</button>
+        </td>
+        <td>{{ p4.ame }}<br>
+          <button v-show="p4.ame != 41" v-on:click="p4.ame++;">+</button>
+          <button v-show="p4.ame != 0" v-on:click="p4.ame--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Wor</td>
+        <td>{{ p1.wor }}<br>
+          <button v-show="p1.wor != 41" v-on:click="p1.wor++;">+</button>
+          <button v-show="p1.wor != 0" v-on:click="p1.wor--;">-</button>
+        </td>
+        <td>{{ p2.wor }}<br>
+          <button v-show="p2.wor != 41" v-on:click="p2.wor++;">+</button>
+          <button v-show="p2.wor != 0" v-on:click="p2.wor--;">-</button>
+        </td>
+        <td>{{ p3.wor }}<br>
+          <button v-show="p3.wor != 41" v-on:click="p3.wor++;">+</button>
+          <button v-show="p3.wor != 0" v-on:click="p3.wor--;">-</button>
+        </td>
+        <td>{{ p4.wor }}<br>
+          <button v-show="p4.wor != 41" v-on:click="p4.wor++;">+</button>
+          <button v-show="p4.wor != 0" v-on:click="p4.wor--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Imp</td>
+        <td>{{ p1.imp }}<br>
+          <button v-show="p1.imp != 41" v-on:click="p1.imp++;">+</button>
+          <button v-show="p1.imp != 0" v-on:click="p1.imp--;">-</button>
+        </td>
+        <td>{{ p2.imp }}<br>
+          <button v-show="p2.imp != 41" v-on:click="p2.imp++;">+</button>
+          <button v-show="p2.imp != 0" v-on:click="p2.imp--;">-</button>
+        </td>
+        <td>{{ p3.imp }}<br>
+          <button v-show="p3.imp != 41" v-on:click="p3.imp++;">+</button>
+          <button v-show="p3.imp != 0" v-on:click="p3.imp--;">-</button>
+        </td>
+        <td>{{ p4.imp }}<br>
+          <button v-show="p4.imp != 41" v-on:click="p4.imp++;">+</button>
+          <button v-show="p4.imp != 0" v-on:click="p4.imp--;">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Con</td>
+        <td>{{ p1.con }}<br>
+          <button v-show="p1.con != 41" v-on:click="p1.con++;">+</button>
+          <button v-show="p1.con != 0" v-on:click="p1.con--;">-</button>
+        </td>
+        <td>{{ p2.con }}<br>
+          <button v-show="p2.con != 41" v-on:click="p2.con++;">+</button>
+          <button v-show="p2.con != 0" v-on:click="p2.con--;">-</button>
+        </td>
+        <td>{{ p3.con }}<br>
+          <button v-show="p3.con != 41" v-on:click="p3.con++;">+</button>
+          <button v-show="p3.con != 0" v-on:click="p3.con--;">-</button>
+        </td>
+        <td>{{ p4.con }}<br>
+          <button v-show="p4.con != 41" v-on:click="p4.con++;">+</button>
+          <button v-show="p4.con != 0" v-on:click="p4.con--;">-</button>
+        </td>
+      </tr>
+      <tr><td>現金除いた合計</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td></tr>
+      <tr><td>株券</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td></tr>
+      <tr><td>ボーナス</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td></tr>
+    </tbody>
+  </table>
   </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
   <script>
-
-    // 数値にカンマを入れるフィルタ
-    Vue.filter('addComma', function (val) {
-      return val.toLocaleString();
-    });
-
     var app = new Vue({
       el: '#app',
       data: {
-        tow_num: 0,
-        lux_num: 0,
-        fes_num: 0,
-        ame_num: 0,
-        wor_num: 0,
-        imp_num: 0,
-        con_num: 0
+        // h: ホテルの軒数（hotel）
+        h: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 }, 
+        // 全プレイヤーの所持株数
+        p: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 }, 
+        //１番手の所持株数
+        p1: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 },
+        //２番手の所持株数
+        p2: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 },
+        //３番手の所持株数
+        p3: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 },
+        //４番手の所持株数
+        p4: { tow: 0, lux: 0, fes: 0, ame: 0, wor: 0, imp: 0, con: 0 } 
       },
       methods: {
-
-        // ホテルの件数増減処理
-        add_tow_num: function () {
-          if (this.tow_num == 41) {
-            return;
-          } else {
-            return this.tow_num++;
-          }
+        //ホテルの軒数を全クリア
+        clear_hotel: function() {
+          this.h.tow = 0,
+          this.h.lux = 0,
+          this.h.fes = 0,
+          this.h.ame = 0,
+          this.h.wor = 0,
+          this.h.imp = 0,
+          this.h.con = 0
+          return;
         },
-        subtract_tow_num: function () {
-          if (this.tow_num == 0) {
-            return;
-          } else {
-            return this.tow_num--;
-          }
-        },
-        add_lux_num: function () {
-          if (this.lux_num == 41) {
-            return;
-          } else {
-            return this.lux_num++;
-          }
-        },
-        subtract_lux_num: function () {
-          if (this.lux_num == 0) {
-            return;
-          } else {
-            return this.lux_num--;
-          }
-        },
-        add_fes_num: function () {
-          if (this.fes_num == 41) {
-            return;
-          } else {
-            return this.fes_num++;
-          }
-        },
-        subtract_fes_num: function () {
-          if (this.fes_num == 0) {
-            return;
-          } else {
-            return this.fes_num--;
-          }
-        },
-        add_ame_num: function () {
-          if (this.ame_num == 41) {
-            return;
-          } else {
-            return this.ame_num++;
-          }
-        },
-        subtract_ame_num: function () {
-          if (this.ame_num == 0) {
-            return;
-          } else {
-            return this.ame_num--;
-          }
-        },
-        add_wor_num: function () {
-          if (this.wor_num == 41) {
-            return;
-          } else {
-            return this.wor_num++;
-          }
-        },
-        subtract_wor_num: function () {
-          if (this.wor_num == 0) {
-            return;
-          } else {
-            return this.wor_num--;
-          }
-        },
-        add_imp_num: function () {
-          if (this.imp_num == 41) {
-            return;
-          } else {
-            return this.imp_num++;
-          }
-        },
-        subtract_imp_num: function () {
-          if (this.imp_num == 0) {
-            return;
-          } else {
-            return this.imp_num--;
-          }
-        },
-        add_con_num: function () {
-          if (this.con_num == 41) {
-            return;
-          } else {
-            return this.con_num++;
-          }
-        },
-        subtract_con_num: function () {
-          if (this.con_num == 0) {
-            return;
-          } else {
-            return this.con_num--;
-          }
-        },
-
       },
       computed: {
-        // Tow / Lux の株価計算式
+        // Tow & Lux 株価計算式
         //=IFS(C3=0,"0",C3=1,"0",C3=2,"200",C3=3,"300",C3=4,"400",C3=5,"500",AND(C3>=6,C3<=10),"600",AND(C3>=11,C3<=20),"700",AND(C3>=21,C3<=30),"800",AND(C3>=31,C3<=40),"900",C3<=41,"1000")
 
-        // Tow の株価
-        tow_stock: function () {
-          if (this.tow_num <= 1) {
+        // Tow の株価（stock price of Tow）
+        s_tow: function() {
+          if (this.h.tow <= 1) {
             return 0
-          } else if (this.tow_num >= 2 && this.tow_num <= 5) {
-            return this.tow_num * 100
-          } else if (this.tow_num >= 6 && this.tow_num <= 10) {
+          } else if (this.h.tow >= 2 && this.h.tow <= 5) {
+            return this.h.tow * 100
+          } else if (this.h.tow >= 6 && this.h.tow <= 10) {
             return 600
-          } else if (this.tow_num >= 11 && this.tow_num <= 20) {
+          } else if (this.h.tow >= 11 && this.h.tow <= 20) {
             return 700
-          } else if (this.tow_num >= 21 && this.tow_num <= 30) {
+          } else if (this.h.tow >= 21 && this.h.tow <= 30) {
             return 800
-          } else if (this.tow_num >= 31 && this.tow_num <= 40) {
+          } else if (this.h.tow >= 31 && this.h.tow <= 40) {
             return 900
-          } else if (this.tow_num <= 41) {
+          } else if (this.h.tow <= 41) {
             return 1000
           }
         },
 
-        // Lux の株価
-        lux_stock: function () {
-          if (this.lux_num <= 1) {
+        // Lux の株価（stock price of Lux）
+        s_lux: function() {
+          if (this.h.lux <= 1) {
             return 0
-          } else if (this.lux_num >= 2 && this.lux_num <= 5) {
-            return this.lux_num * 100
-          } else if (this.lux_num >= 6 && this.lux_num <= 10) {
+          } else if (this.h.lux >= 2 && this.h.lux <= 5) {
+            return this.h.lux * 100
+          } else if (this.h.lux >= 6 && this.h.lux <= 10) {
             return 600
-          } else if (this.lux_num >= 11 && this.lux_num <= 20) {
+          } else if (this.h.lux >= 11 && this.h.lux <= 20) {
             return 700
-          } else if (this.lux_num >= 21 && this.lux_num <= 30) {
+          } else if (this.h.lux >= 21 && this.h.lux <= 30) {
             return 800
-          } else if (this.lux_num >= 31 && this.lux_num <= 40) {
+          } else if (this.h.lux >= 31 && this.h.lux <= 40) {
             return 900
-          } else if (this.lux_num <= 41) {
+          } else if (this.h.lux <= 41) {
             return 1000
           }
         },
@@ -395,58 +329,58 @@
         // =IFS(C7=0,"0",C7=1,"0",C7=2,"300",C7=3,"400",C7=4,"500",C7=5,"600",AND(C7>=6,C7<=10),"700",AND(C7>=11,C7<=20),"800",AND(C7>=21,C7<=30),"900",AND(C7>=31,C7<=40),"1000",C7<=41,"1100")
 
         // Fes の株価
-        fes_stock: function () {
-          if (this.fes_num <= 1) {
+        s_fes: function () {
+          if (this.h.fes <= 1) {
             return 0
-          } else if (this.fes_num >= 2 && this.fes_num <= 5) {
-            return this.fes_num * 100 + 100
-          } else if (this.fes_num >= 6 && this.fes_num <= 10) {
+          } else if (this.h.fes >= 2 && this.h.fes <= 5) {
+            return this.h.fes * 100 + 100
+          } else if (this.h.fes >= 6 && this.h.fes <= 10) {
             return 700
-          } else if (this.fes_num >= 11 && this.fes_num <= 20) {
+          } else if (this.h.fes >= 11 && this.h.fes <= 20) {
             return 800
-          } else if (this.fes_num >= 21 && this.fes_num <= 30) {
+          } else if (this.h.fes >= 21 && this.h.fes <= 30) {
             return 900
-          } else if (this.fes_num >= 31 && this.fes_num <= 40) {
+          } else if (this.h.fes >= 31 && this.h.fes <= 40) {
             return 1000
-          } else if (this.fes_num <= 41) {
+          } else if (this.h.fes <= 41) {
             return 1100
           }
         },
 
         // Ame の株価
-        ame_stock: function () {
-          if (this.ame_num <= 1) {
+        s_ame: function () {
+          if (this.h.ame <= 1) {
             return 0
-          } else if (this.ame_num >= 2 && this.ame_num <= 5) {
-            return this.ame_num * 100 + 100
-          } else if (this.ame_num >= 6 && this.ame_num <= 10) {
+          } else if (this.h.ame >= 2 && this.h.ame <= 5) {
+            return this.h.ame * 100 + 100
+          } else if (this.h.ame >= 6 && this.h.ame <= 10) {
             return 700
-          } else if (this.ame_num >= 11 && this.ame_num <= 20) {
+          } else if (this.h.ame >= 11 && this.h.ame <= 20) {
             return 800
-          } else if (this.ame_num >= 21 && this.ame_num <= 30) {
+          } else if (this.h.ame >= 21 && this.h.ame <= 30) {
             return 900
-          } else if (this.ame_num >= 31 && this.ame_num <= 40) {
+          } else if (this.h.ame >= 31 && this.h.ame <= 40) {
             return 1000
-          } else if (this.ame_num <= 41) {
+          } else if (this.h.ame <= 41) {
             return 1100
           }
         },
 
         // Wor の株価
-        wor_stock: function () {
-          if (this.wor_num <= 1) {
+        s_wor: function () {
+          if (this.h.wor <= 1) {
             return 0
-          } else if (this.wor_num >= 2 && this.wor_num <= 5) {
-            return this.wor_num * 100 + 100
-          } else if (this.wor_num >= 6 && this.wor_num <= 10) {
+          } else if (this.h.wor >= 2 && this.h.wor <= 5) {
+            return this.h.wor * 100 + 100
+          } else if (this.h.wor >= 6 && this.h.wor <= 10) {
             return 700
-          } else if (this.wor_num >= 11 && this.wor_num <= 20) {
+          } else if (this.h.wor >= 11 && this.h.wor <= 20) {
             return 800
-          } else if (this.wor_num >= 21 && this.wor_num <= 30) {
+          } else if (this.h.wor >= 21 && this.h.wor <= 30) {
             return 900
-          } else if (this.wor_num >= 31 && this.wor_num <= 40) {
+          } else if (this.h.wor >= 31 && this.h.wor <= 40) {
             return 1000
-          } else if (this.wor_num <= 41) {
+          } else if (this.h.wor <= 41) {
             return 1100
           }
         },
@@ -455,49 +389,48 @@
         // =IFS(C13=0,"0",C13=1,"0",C13=2,"400",C13=3,"500",C13=4,"600",C13=5,"700",AND(C13>=6,C13<=10),"800",AND(C13>=11,C13<=20),"900",AND(C13>=21,C13<=30),"1000",AND(C13>=31,C13<=40),"1100",C13<=41,"1200")
 
         // Imp の株価
-        imp_stock: function () {
-          if (this.imp_num <= 1) {
+        s_imp: function () {
+          if (this.h.imp <= 1) {
             return 0
-          } else if (this.imp_num >= 2 && this.imp_num <= 5) {
-            return this.imp_num * 100 + 200
-          } else if (this.imp_num >= 6 && this.imp_num <= 10) {
+          } else if (this.h.imp >= 2 && this.h.imp <= 5) {
+            return this.h.imp * 100 + 200
+          } else if (this.h.imp >= 6 && this.h.imp <= 10) {
             return 800
-          } else if (this.imp_num >= 11 && this.imp_num <= 20) {
+          } else if (this.h.imp >= 11 && this.h.imp <= 20) {
             return 900
-          } else if (this.imp_num >= 21 && this.imp_num <= 30) {
+          } else if (this.h.imp >= 21 && this.h.imp <= 30) {
             return 1000
-          } else if (this.imp_num >= 31 && this.imp_num <= 40) {
+          } else if (this.h.imp >= 31 && this.h.imp <= 40) {
             return 1100
-          } else if (this.imp_num <= 41) {
+          } else if (this.h.imp <= 41) {
             return 1200
           }
         },
 
         // Con の株価
-        con_stock: function () {
-          if (this.con_num <= 1) {
+        s_con: function () {
+          if (this.h.con <= 1) {
             return 0
-          } else if (this.con_num >= 2 && this.con_num <= 5) {
-            return this.con_num * 100 + 200
-          } else if (this.con_num >= 6 && this.con_num <= 10) {
+          } else if (this.h.con >= 2 && this.h.con <= 5) {
+            return this.h.con * 100 + 200
+          } else if (this.h.con >= 6 && this.h.con <= 10) {
             return 800
-          } else if (this.con_num >= 11 && this.con_num <= 20) {
+          } else if (this.h.con >= 11 && this.h.con <= 20) {
             return 900
-          } else if (this.con_num >= 21 && this.con_num <= 30) {
+          } else if (this.h.con >= 21 && this.h.con <= 30) {
             return 1000
-          } else if (this.con_num >= 31 && this.con_num <= 40) {
+          } else if (this.h.con >= 31 && this.h.con <= 40) {
             return 1100
-          } else if (this.con_num <= 41) {
+          } else if (this.h.con <= 41) {
             return 1200
           }
-        },
-
-      } // computed
-
+        }
+      }, // computed
     });
-
-    // https://docs.google.com/spreadsheets/d/1WT_yUzyXCkFzqThOiOOIwPVQ97JcJTqaoRbRz3sPYe4/edit?fbclid=IwAR2hhiTYP7FskvpYXSfVviwT8p_B695LKEpoYUYG9fev9MK69bsrP3dbFR4#gid=0
+    //合併ボーナス
+    //=roundup(E3*Q4,-2)
+    // １位　E3 株価×
+    // =IF(countif(I3:L3,"0")=4,0,O4*(10*P4+15*(1-P4))+(1-O4)*15/N4)
   </script>
 </body>
-
 </html>
